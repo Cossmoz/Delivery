@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -29,7 +30,8 @@ public class CardDeliveryTest {
         form.$("[data-test-id='agreement']").click();
         form.$(".button__content").click();
         $("[data-test-id='notification']")
-                .waitUntil(visible, 15000).shouldHave(text("Встреча успешно забронирована"));
+        .shouldBe(visible, Duration.ofMillis(15000)).shouldHave(text("Встреча успешно забронирована на " + testDay(3)));
+
 
 
     }
